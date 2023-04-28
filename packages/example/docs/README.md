@@ -1,0 +1,3 @@
+::: tip
+make things easier
+:::
