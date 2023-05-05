@@ -1,10 +1,6 @@
 {
-    "packages": [
-      "devops-admin",
-      "devops-tenant"
-    ],
+    "packages": ["packages/*"],
+    "version": "0.1.0",
     "npmClient": "yarn",
-    "version": "independent",
     "useWorkspaces": true
-  }
-  
+}

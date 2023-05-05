@@ -1,0 +1,19 @@
+{
+    "name": "docs",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    },
+    "devDependencies": {
+        "sass": "^1.26.5",
+        "sass-loader": "^8.0.2",
+        "svg-sprite-loader": "^6.0.11",
+        "vuepress": "^1.9.9"
+    },
+    "dependencies": {
+        "@devops/svg-icon": "^1.0.0"
+    }
+}

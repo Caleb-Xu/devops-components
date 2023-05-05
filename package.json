@@ -1,23 +1,16 @@
 {
-  "name": "devops-components",
-  "version": "1.0.0",
-  "description": "devops 业务组件库",
-  "main": "lerna.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FE-Friday/devops-components.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FE-Friday/devops-components/issues"
-  },
-  "homepage": "https://github.com/FE-Friday/devops-components#readme"
+    "name": "devops-business-components",
+    "description": "devops 业务组件库",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "start": "lerna bootstrap",
+        "doc": "lerna run --scope docs docs:dev"
+    },
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    }
 }
