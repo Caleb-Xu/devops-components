@@ -1,0 +1,30 @@
+{
+  "name": "vuepress-plugin-shortlink",
+  "version": "1.1.0",
+  "description": "short link for vuepress",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ioutio/vuepress-plugin-shortlink.git"
+  },
+  "keywords": [
+    "vuepress",
+    "short",
+    "link",
+    "shortlink",
+    "permalink"
+  ],
+  "author": "a little",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://iout.io/open/vuepress-plugin-shortlink",
+    "email":"mo@autre.cn"
+  },
+  "homepage": "https://iout.io/open/vuepress-plugin-shortlink"
+}
