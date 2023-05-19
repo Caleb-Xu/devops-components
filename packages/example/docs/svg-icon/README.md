@@ -51,6 +51,18 @@ SVG 图标组件，通过`svg-sprite-loader`引入的 SVG 图标可以直接用�
         <svg-icon btn theme="danger" size="14" name="delete" />
     </div>
 </template>
+
+<style lang="scss">
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+</style>
 ```
 
 ### 批量导入 SVG 文件

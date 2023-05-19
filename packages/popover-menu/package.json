@@ -1,0 +1,11 @@
+{
+    "name": "@devops/popover-menu",
+    "version": "1.0.0",
+    "description": "popover-menu common component",
+    "main": "install.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Morris",
+    "license": "ISC"
+}
