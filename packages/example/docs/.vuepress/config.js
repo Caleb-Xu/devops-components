@@ -12,6 +12,7 @@ module.exports = {
         nav: [{text: "GitHub", link: "https://github.com/FE-Friday/devops-components"}],
         sidebar: [
             { title: 'SVG图标', path: '/svg-icon/' },
+            { title: '下拉菜单', path: '/popover-menu/' },
             { title: '示例', path: '/demo/' },
         ]
     },
@@ -63,6 +64,11 @@ module.exports = {
     ],
     markdown: {
         lineNumbers: true
+    },
+    configureWebpack: {
+        externals: {
+            'bk-magic-vue': 'bkMagicVue'
+        }
     },
     chainWebpack: (config) => {
         config.module
