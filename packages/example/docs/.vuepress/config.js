@@ -1,84 +1,84 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
-    title: '业务组件库',
+    title: "业务组件库",
     themeConfig: {
-        logo: '/assets/logo.png',
+        logo: "/assets/logo.png",
         lang: "zh-CN",
         activeHeaderLinks: false,
         displayAllHeaders: false,
         searchPlaceholder: "请输入关键词搜索",
         sidebarDepth: 2,
-        nav: [{text: "GitHub", link: "https://github.com/FE-Friday/devops-components"}],
+        nav: [{ text: "GitHub", link: "https://github.com/FE-Friday/devops-components" }],
         sidebar: [
-            { title: 'SVG图标', path: '/svg-icon/' },
-            { title: '下拉菜单', path: '/popover-menu/' },
-            { title: '示例', path: '/demo/' },
-        ]
+            { title: "SVG图标", path: "/svg-icon/" },
+            { title: "下拉菜单", path: "/popover-menu/" },
+            { title: "示例", path: "/demo/" },
+        ],
     },
+    dest: "dist",
     plugins: [
         "fulltext-search",
         "@vuepress/back-to-top",
         "@vuepress/nprogress",
-        ["vuepress-plugin-code-copy", {
-            align: "top",
-            staticIcon: true,
-            color: "#3eaf7c"
-        }],
         [
-            require('./plugins/vuepress-plugin-shortlink/lib/index'),
+            "vuepress-plugin-code-copy",
             {
-                normalSuffix: '',
-                indexSuffix: '/',
-                notFoundPath: '/404.html',
-                containDirs: [
-                    '/automation',
-                    '/BFF',
-                    '/issue-doc',
-                    // '/components',
-                    '/document',
-                    '/lowCode',
-                    '/performance',
-                    '/scaffold',
-                    '/standard',
-                    '/template',
-                    '/tool'
-                ]
+                align: "top",
+                staticIcon: true,
+                color: "#3eaf7c",
             },
         ],
-        [   '@vuepress/search',
+        [
+            require("./plugins/vuepress-plugin-shortlink/lib/index"),
             {
-                searchMaxSuggestions: 10
-            }
+                normalSuffix: "",
+                indexSuffix: "/",
+                notFoundPath: "/404.html",
+                containDirs: [
+                    "/automation",
+                    "/BFF",
+                    "/issue-doc",
+                    // '/components',
+                    "/document",
+                    "/lowCode",
+                    "/performance",
+                    "/scaffold",
+                    "/standard",
+                    "/template",
+                    "/tool",
+                ],
+            },
         ],
         [
-            '@vuepress/last-updated',
+            "@vuepress/search",
             {
-              transformer: (timestamp, lang) => {
-                const moment = require('moment')
-                moment.locale(lang)
-                return moment(timestamp).fromNow()
-              }
-            }
-        ]
+                searchMaxSuggestions: 10,
+            },
+        ],
+        [
+            "@vuepress/last-updated",
+            {
+                transformer: (timestamp, lang) => {
+                    const moment = require("moment");
+                    moment.locale(lang);
+                    return moment(timestamp).fromNow();
+                },
+            },
+        ],
     ],
     markdown: {
-        lineNumbers: true
-    },
-    configureWebpack: {
-        externals: {
-            'bk-magic-vue': 'bkMagicVue'
-        }
+        lineNumbers: true,
     },
     chainWebpack: (config) => {
         config.module
-            .rule('devops-svg')
+            .rule("devops-svg")
             .test(/\.svg$/)
-            .include.add(path.resolve('docs'))
+            .include.add(path.resolve("docs"))
             .end()
-            .use('svg-sprite-loader')
-            .loader('svg-sprite-loader')
+            .use("svg-sprite-loader")
+            .loader("svg-sprite-loader");
 
-        config.module.rule('svg').exclude.add(path.resolve('docs')).end()
-    }
-  }
+        config.module.rule("svg").exclude.add(path.resolve("docs")).end();
+    },
+};

@@ -28,14 +28,12 @@
 
 <script>
 import { defineComponent } from "vue";
-import { bkPopover } from "bk-magic-vue";
 import SvgIcon from "@devops/svg-icon";
 
 export default defineComponent({
     name: "popover-menu",
     components: {
         SvgIcon,
-        bkPopover,
     },
     props: {
         iconName: {
