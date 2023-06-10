@@ -47,7 +47,7 @@
 </script>
 
 <template>
-    <div class="example-container">
+    <div class="popover-container">
         <p>带分组/禁用状态/危险操作的操作菜单</p>
         <popover-menu
             :popover-config="{ offset: -55, distance: 10, width: 110 }"
@@ -121,7 +121,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .example-container {
     padding: 20px;
 }
@@ -154,7 +154,7 @@ export default {
 
 | 事件名称   | 说明         | 参数 |
 | ---------- | :----------- | :--- |
-| menu-click | 菜单点击事件 | menu |
+| click-menu | 菜单点击事件 | menu |
 
 ## 方法
 

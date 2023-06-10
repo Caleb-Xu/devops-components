@@ -1,13 +1,20 @@
 # empty 空数据页面
 
-空数据页面，可用于devops平台中没有数据的情况，包括 < bk-table /> < bk-select />等组件内部，若不能直接使用，可在插槽内部使用，若图片不满足，可使用匿名插槽自定义实现。
+空数据页面，可用于devops平台中没有数据的情况，包括 `bk-table`、`bk-select` 等组件内部，若不能直接使用，可在插槽内部使用，若图片不满足，可使用匿名插槽自定义实现。
 
-## 示例代码
+## 示例
+### 安装
+```bash
+npm install -S @devops/empty
 
+# or
+
+yarn add @devops/empty
+```
 ### 常规使用
 
-
 <script>
+    // 引入组件
     import Empty from '@devops/empty'
 
     export default {
@@ -38,7 +45,7 @@
     </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .example-container {
     padding: 20px;
     height: 500px;
@@ -198,11 +205,10 @@
 
 | 名称    |              说明                  |
 | ------- | :--------------------------------  |
-| ——————  | 匿名插槽，可根据需要自定义图片相关	 |
+| --  | 匿名插槽，可根据需要自定义图片相关	 |
 
 ## 事件
 
 |      事件名称      |        说明     |  参数 |
-| ----------------- | :-------------  | :---- |
-| click-add-handler | 创建按钮点击事件  | ———— |
-
+| ----------------- | :------------- | :---- |
+| click-add-handler | 创建按钮点击事件  | -- |
