@@ -1,0 +1,11 @@
+{
+    "name": "@devops/empty",
+    "version": "1.0.0",
+    "description": "empty common component",
+    "main": "install.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "sweetheart",
+    "license": "ISC"
+}
