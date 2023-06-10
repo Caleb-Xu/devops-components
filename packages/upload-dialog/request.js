@@ -1,55 +1,6 @@
 import SparkMD5 from 'spark-md5'
 
-export type FormDataAttributes = { name: string, value: string | Blob }[]
-export type HeaderAttributes = { name: string, value: string } | { name: string, value: string }[]
-export type XhrResponse = {
-    code?: number
-    message?: string,
-    [key: string]: unknown
-}
-
-export type FileObj = {
-    name: string
-    originSize: number
-    size: number
-    maxFileSize: number
-    maxImgSize: number
-    type: string
-    fileHeader: string
-    origin: File
-    url: string
-    sliceUrl: string
-    mergeUrl: string
-    chunkSize: number
-    base64: string
-    status: string
-    done: boolean
-    responseData: unknown
-    speed: number
-    errorMsg: string
-    progress: string
-    xhr?: XMLHttpRequest
-}
-
-export type UploaderOptions = {
-    fileName: string
-    fileObj: FileObj
-    fileList: FileObj[]
-    data: FormDataAttributes
-    withCredentials: boolean
-    method: 'POST'
-    header: HeaderAttributes
-    url: string,
-    sliceUrl: string
-    mergeUrl: string
-    chunkSize: number
-    onProgress: (evt?: Event, index?: number) => void
-    onSuccess: (res: XhrResponse, fileObj: FileObj) => void
-    onError: (fileObj: FileObj, fileList: FileObj[], res: unknown) => void
-    onDone: (fileObj: FileObj) => void
-}
-
-const parseResponse = (response: string): XhrResponse => {
+const parseResponse = (response) => {
     if (!response) {
         return {}
     }
@@ -60,7 +11,7 @@ const parseResponse = (response: string): XhrResponse => {
     }
 }
 
-export const defaultRequest = (options: UploaderOptions): { abort:() => void } => {
+export const defaultRequest = (options) => {
     const xhr = new XMLHttpRequest()
     options.fileObj.xhr = xhr
 
@@ -103,7 +54,7 @@ export const defaultRequest = (options: UploaderOptions): { abort:() => void } =
     xhr.send(formData)
 
     return {
-        abort () {
+        abort() {
             xhr.abort()
         }
     }
@@ -111,7 +62,7 @@ export const defaultRequest = (options: UploaderOptions): { abort:() => void } =
 
 // 该方法用于在不同的浏览器使用不同的方式
 const blobSlice = File.prototype.slice
-export const sliceRequest = async (options: UploaderOptions): Promise<void> => {
+export const sliceRequest = async (options) => {
     const chunkSize = options.chunkSize * 1024 * 1024
     const file = options.fileObj.origin
     if (!file) {
@@ -124,11 +75,11 @@ export const sliceRequest = async (options: UploaderOptions): Promise<void> => {
     }
     const blockCount = Math.ceil(file.size / chunkSize)
     const hash = await hashFile(file, chunkSize)
-    const progressList: Promise<unknown>[] = []
+    const progressList = []
     sliceUpload(options, file, blockCount, hash, progressList, chunkSize)
     // 所有分片上传后，请求合并分片文件
     await Promise.all(progressList).then(() => {
-    // 合并chunks
+        // 合并chunks
         const data = {
             size: file.size,
             name: file.name,
@@ -155,7 +106,7 @@ export const sliceRequest = async (options: UploaderOptions): Promise<void> => {
     })
 }
 // 请求分片上传，保存在progressList中
-const sliceUpload = (options: UploaderOptions, file: File, blockCount: number, hash: string, progressList: Promise<unknown>[], chunkSize: number) => {
+const sliceUpload = (options, file, blockCount, hash, progressList, chunkSize) => {
     for (let i = 0; i < blockCount; i++) {
         const pooltask = new Promise((resolve, reject) => {
             const start = i * chunkSize
@@ -209,19 +160,19 @@ const sliceUpload = (options: UploaderOptions, file: File, blockCount: number, h
     }
 }
 // SparkMD5分片文件
-const hashFile = (file: File, chunkSize: number): Promise<string> => {
+const hashFile = (file, chunkSize) => {
     return new Promise(resolve => {
         const chunks = Math.ceil(file.size / chunkSize)
         let currentChunk = 0
         const spark = new SparkMD5.ArrayBuffer()
         const fileReader = new FileReader()
-        function loadNext () {
+        function loadNext() {
             const start = currentChunk * chunkSize
             const end = start + chunkSize >= file.size ? file.size : start + chunkSize
             fileReader.readAsArrayBuffer(blobSlice.call(file, start, end))
         }
         fileReader.onload = e => {
-            spark.append(e.target.result as ArrayBuffer) // Append array buffer
+            spark.append(e.target.result) // Append array buffer
             currentChunk += 1
             if (currentChunk < chunks) {
                 loadNext()
