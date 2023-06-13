@@ -1,4 +1,4 @@
-import UploadDialog from './UploadDialog.vue'
+import UploadDialog from './index.vue'
 import Uploader from './Uploader.vue'
 
 export { UploadDialog, Uploader }

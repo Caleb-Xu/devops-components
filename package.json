@@ -8,7 +8,7 @@
     ],
     "scripts": {
         "start": "lerna bootstrap",
-        "doc": "lerna run docs:dev --scope=example-doc"
+        "doc": "lerna run docs:dev --scope=example"
     },
     "devDependencies": {
         "lerna": "^4.0.0"
