@@ -1,0 +1,14 @@
+{
+    "name": "@devops/upload-dialog",
+    "version": "1.0.0",
+    "description": "upload file component",
+    "main": "install.js",
+    "author": "Caleb",
+    "license": "ISC",
+    "dependencies": {
+        "spark-md5": "^3.0.2"
+    },
+    "devDependencies": {
+        "@types/spark-md5": "^3.0.2"
+    }
+}

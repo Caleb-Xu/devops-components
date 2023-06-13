@@ -13,7 +13,8 @@ module.exports = {
         sidebar: [
             { title: "SVG图标", path: "/svg-icon/" },
             { title: "下拉菜单", path: "/popover-menu/" },
-            { title: "空数据", path: "/empty/" },
+            { title: "上传文件", path: "/uploader/" },
+            { title: "空数据", path: "/empty/" }
         ],
     },
     dest: "dist",
