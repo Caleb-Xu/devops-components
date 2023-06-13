@@ -30,7 +30,7 @@ SVG 图标组件，通过`svg-sprite-loader`引入的 SVG 图标可以直接用�
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .flex-center {
     display: flex;
     align-items: center;
